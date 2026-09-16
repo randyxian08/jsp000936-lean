@@ -1,0 +1,58 @@
+Verified scopes: JSP-000936 real interval; JSP-000937 classification ONLY.
+Full JSP-000937 remains incomplete: logarithmic upper bound is not supplied.
+Lean (version 4.27.0, arm64-apple-darwin24.6.0, commit db93fe1608548721853390a10cd40580fe7d22ae, Release)
+Current branch: HEAD
+Using cache (Azure) from origin: leanprover-community/mathlib4
+No files to download
+Decompressing 7869 file(s)
+Unpacked in 9140 ms
+Completed successfully!
+⚠ [3249/3267] Replayed Erdos1153.JSPInterpolation.FreeNodes
+warning: Erdos1153/JSPInterpolation/FreeNodes.lean:175:4: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Erdos1153/JSPInterpolation/FreeNodes.lean:183:4: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Build completed successfully (3267 jobs).
+'JSPFreeNodes.jsp_000936' depends on axioms: [propext, Classical.choice, Quot.sound]
+'JSPFreeNodes.minimizer_iff_shape_and_endpoints' depends on axioms: [propext, Classical.choice, Quot.sound]
+'JSPFreeNodes.jsp_000936' depends on axioms: [propext, Classical.choice, Quot.sound]
+'JSPFreeNodes.jsp_000937_classification' depends on axioms: [propext, Classical.choice, Quot.sound]
+'JSPFreeNodes.canonical_allMinPeak_eq_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'JSPFreeNodes.allMinPeak_le_any_amplification' depends on axioms: [propext, Classical.choice, Quot.sound]
+'JSPInterpolation.jsp_000958_maximum' depends on axioms: [propext, Classical.choice, Quot.sound]
+{
+  "missing_declarations": [],
+  "nonstandard_axioms": {},
+  "observed_axioms": {
+    "JSPFreeNodes.jsp_000936": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "JSPFreeNodes.jsp_000937_classification": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "JSPFreeNodes.canonical_allMinPeak_eq_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "JSPFreeNodes.allMinPeak_le_any_amplification": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "JSPInterpolation.jsp_000958_maximum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "result": "pass",
+  "scope": "available declarations only, NOT the full 937 task"
+}
+ALL DECLARED SCOPES PASSED; FULL JSP-000937 NOT CLAIMED.

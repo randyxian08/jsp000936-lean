@@ -1,0 +1,53 @@
+--- a/Erdos1153/JSPInterpolation/FreeNodes.lean
++++ b/Erdos1153/JSPInterpolation/FreeNodes.lean
+@@ -165,7 +165,7 @@
+   intro u v huv
+   change (A + B) / 2 + ((B - A) / 2) * u <
+     (A + B) / 2 + ((B - A) / 2) * v
+-  exact add_lt_add_left (mul_lt_mul_of_pos_left huv hs) ((A + B) / 2)
++  exact add_lt_add_right (mul_lt_mul_of_pos_left huv hs) ((A + B) / 2)
+ 
+ lemma affine_unaffine {A B : ℝ} (hAB : A < B) (x : ℝ) :
+     affine A B (unaffine A B x) = x := by
+@@ -545,20 +545,15 @@
+     lebesgueFunction nodes (affine (left nodes.sorted) (right nodes.sorted) t) =
+       lebesgueFunction opt.toNodeFamily t := by
+   have heq := (frame_eq_affine_iff opt nodes).2 hshape
+-  calc
+-    lebesgueFunction nodes (affine (left nodes.sorted) (right nodes.sorted) t) =
+-        lebesgueFunction nodes.sorted.toNodeFamily
+-          (affine (left nodes.sorted) (right nodes.sorted) t) :=
+-      (NodeFamily.lebesgueFunction_sorted nodes _).symm
+-    _ = lebesgueFunction
+-        (affineNodes opt (frame nodes.sorted).admissibleInterval).toNodeFamily
+-        (affine (left nodes.sorted) (right nodes.sorted) t) :=
+-      congrArg
+-        (fun s : EndpointArray d (left nodes.sorted) (right nodes.sorted) =>
+-          lebesgueFunction s.toNodeFamily
+-            (affine (left nodes.sorted) (right nodes.sorted) t)) heq
+-    _ = lebesgueFunction opt.toNodeFamily t :=
+-      lebesgueFunction_affine opt (frame nodes.sorted).admissibleInterval t
++  have hbase := congrArg
++    (fun s : EndpointArray d (left nodes.sorted) (right nodes.sorted) => s.toNodeFamily) heq
++  dsimp only at hbase
++  rw [← NodeFamily.lebesgueFunction_sorted nodes]
++  change lebesgueFunction (frame nodes.sorted).toNodeFamily
++      (affine (left nodes.sorted) (right nodes.sorted) t) = _
++  rw [hbase]
++  exact lebesgueFunction_affine opt (frame nodes.sorted).admissibleInterval t
++
+ 
+ lemma lebesgueFunction_of_shape_inverse {d : ℕ} (opt : EndpointArray d (-1) 1)
+     (nodes : NodeFamily (d + 2)) (hshape : HasShape opt nodes) (x : ℝ) :
+--- a/Erdos1153/JSPInterpolation/AllGaps.lean
++++ b/Erdos1153/JSPInterpolation/AllGaps.lean
+@@ -148,7 +148,8 @@
+     rw [Polynomial.degree_X]
+     exact_mod_cast (show (1 : ℕ) < d + 2 by omega)
+   simpa only [Polynomial.eval_X] using
+-    (abs_eval_le_mul_lebesgueFunction nodes Polynomial.X hp a x ha)
++    (abs_eval_le_mul_lebesgueFunction nodes Polynomial.X hp a x
++      (by simpa only [Polynomial.eval_X] using ha))
+ 
+ /-- An explicit compression of the equioscillating pattern attains the
+ all-gap optimum.  No divergent-limit theorem or selection assumption is used. -/
