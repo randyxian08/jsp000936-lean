@@ -3,7 +3,7 @@ set -euo pipefail
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")"
 export PATH="$HOME/.elan/bin:$PATH"
 echo 'Verified scopes: JSP-000936 real interval; JSP-000937 classification ONLY.'
-echo 'Full JSP-000937 remains incomplete: logarithmic upper bound is not supplied.'
+echo 'This repository claims only JSP-000937 classification; the separate jsp000937-lean repository contains the complete logarithmic target.'
 lake env lean --version
 lake exe cache get
 lake build Erdos1153.JSPInterpolation.Regression Erdos1153.JSPInterpolation.JSP958
