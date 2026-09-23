@@ -1,0 +1,7 @@
+import Erdos1153.JSPInterpolation.Definitions
+
+namespace IndependentChallenge
+
+theorem proof : JSPFreeNodes.Target936 := by sorry
+
+end IndependentChallenge

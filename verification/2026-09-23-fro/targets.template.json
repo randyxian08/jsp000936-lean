@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "project": {
+    "root": "/absolute/path/to/checkout",
+    "repository": "https://github.com/randyxian08/jsp000936-lean",
+    "commit": "0ced15a2630c5c68b23de896d7e6ad1e7cfeda01",
+    "toolchain": "leanprover/lean4:v4.33.0"
+  },
+  "problems": [
+    {
+      "id": "JSP-000936",
+      "source": "https://www.erdosproblems.com/1129",
+      "requirements": [
+        {
+          "id": "one-node",
+          "description": "Every one-node family minimizes the full-interval amplification",
+          "targets": [
+            "one-node",
+            "full"
+          ],
+          "coverage": "pending"
+        },
+        {
+          "id": "existence",
+          "description": "For every n at least two, a free-node minimizer exists",
+          "targets": [
+            "free",
+            "full"
+          ],
+          "coverage": "pending"
+        },
+        {
+          "id": "classification",
+          "description": "Every free-node minimizer and only those are characterized by the stated reference shape, affine copy and exterior inequalities",
+          "targets": [
+            "free",
+            "full"
+          ],
+          "coverage": "pending"
+        }
+      ]
+    }
+  ],
+  "targets": [
+    {
+      "id": "one-node",
+      "problem": "JSP-000936",
+      "role": "theorem",
+      "module": "Erdos1153.JSPInterpolation.FreeNodes",
+      "source": "Erdos1153/JSPInterpolation/FreeNodes.lean",
+      "declaration": "JSPFreeNodes.jsp_000936_one_node"
+    },
+    {
+      "id": "free",
+      "problem": "JSP-000936",
+      "role": "theorem",
+      "module": "Erdos1153.JSPInterpolation.FreeNodes",
+      "source": "Erdos1153/JSPInterpolation/FreeNodes.lean",
+      "declaration": "JSPFreeNodes.jsp_000936_free"
+    },
+    {
+      "id": "full",
+      "problem": "JSP-000936",
+      "role": "theorem",
+      "module": "Erdos1153.JSPInterpolation.FreeNodes",
+      "source": "Erdos1153/JSPInterpolation/FreeNodes.lean",
+      "declaration": "JSPFreeNodes.jsp_000936"
+    }
+  ]
+}
