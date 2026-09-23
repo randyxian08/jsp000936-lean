@@ -10,6 +10,7 @@ lake build Erdos1153.JSPInterpolation.Regression Erdos1153.JSPInterpolation.JSP9
 lake env lean Audit936.lean
 lake env lean AuditAvailable.lean 2>&1 | tee verification-axioms.log
 python3 tools/check_axiom_log.py verification-axioms.log
+lake env leanchecker Erdos1153.JSPInterpolation.FreeNodes
 if grep -R -n -E --include='*.lean' \
   '(^|[^[:alnum:]_])(sorry|admit|sorryAx|native_decide|implemented_by)([^[:alnum:]_]|$)|^[[:space:]]*(axiom|unsafe|opaque)[[:space:]]' \
   Erdos1153 Erdos1153.lean Audit936.lean AuditAvailable.lean; then

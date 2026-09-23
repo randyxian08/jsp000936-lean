@@ -40,19 +40,24 @@ Install elan, Git and Python 3, then run:
 bash verify.sh
 ```
 
-Lean is pinned to 4.27.0 and Mathlib to v4.27.0, with the exact dependency
+Lean is pinned to 4.33.0 and Mathlib commit
+`db584cd6d46c92f209a44c0f1c829460d327499d`, with the exact dependency
 commits in `lake-manifest.json`. The verifier checks the declared scopes,
 prints the actual axiom dependencies and rejects missing or unexpected
-axiom reports and proof placeholders. Passing it does not assert the full
+axiom reports and proof placeholders. It also replays the final module with
+`leanchecker`. Passing it does not assert the full
 JSP-000937 target.
 
-Local verification passed on macOS arm64 on 2026-09-16, reusing dependency
+The earlier local verification passed on macOS arm64 on 2026-09-16, reusing dependency
 build artifacts. The repaired source modules were recompiled; the generated
 single-file form was also checked in the local repair package. See
-[evidence/local-verification.log](evidence/local-verification.log) for this
-publication snapshot. Expected final axioms are `propext`, `Classical.choice`
+[evidence/local-verification.log](evidence/local-verification.log) for that
+4.27.0 snapshot; it is historical evidence, not a check of this upgraded
+version. Expected final axioms are `propext`, `Classical.choice`
 and `Quot.sound`. GitHub Actions supplies an additional Linux reproduction;
 consult its actual run status rather than assuming it has passed.
+
+The upgraded snapshot has a separate [Lean 4.33.0 local verification record](evidence/lean433-local-verification.md).
 
 Kernel checking is separate from independent review of the formal statement,
 authorship, priority, and award eligibility. This is a submission for review,

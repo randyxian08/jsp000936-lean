@@ -547,7 +547,6 @@ lemma lebesgueFunction_of_shape {d : ℕ} (opt : EndpointArray d (-1) 1)
   have heq := (frame_eq_affine_iff opt nodes).2 hshape
   have hbase := congrArg
     (fun s : EndpointArray d (left nodes.sorted) (right nodes.sorted) => s.toNodeFamily) heq
-  dsimp only at hbase
   rw [← NodeFamily.lebesgueFunction_sorted nodes]
   change lebesgueFunction (frame nodes.sorted).toNodeFamily
       (affine (left nodes.sorted) (right nodes.sorted) t) = _
